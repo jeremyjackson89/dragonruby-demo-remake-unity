@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3377526112355753275}
   - component: {fileID: 2231677059737599531}
   - component: {fileID: 557695595066079298}
+  - component: {fileID: 7571252428866639962}
   m_Layer: 0
   m_Name: BlueBullet
   m_TagString: Untagged
@@ -141,5 +142,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d76552f9fdd3ef48b0536283bbbe7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   rigidbody: {fileID: 3377526112355753275}
+  firer: {fileID: 0}
+  speed: 5
+  lifeTime: 10
+--- !u!114 &7571252428866639962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6698932331551038405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28307f434f7eaf54d9091d77d6991132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yThreshold: 5.5
+  xThreshold: 9.5

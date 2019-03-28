@@ -24,15 +24,36 @@ public class Ship : MonoBehaviour {
         }
 
         if (inputMove) {
-            rigidbody.AddRelativeForce(Vector2.right * speed / 2);
+            rigidbody.AddRelativeForce(Vector2.right * speed * 0.75f);
         }
 
         if (Input.GetButtonDown("Fire1")) {
             Shoot();
         }
+
+        if (Input.GetButtonDown("Fire2")) {
+            SetMine();
+        }
     }
 
     void Shoot() {
-        Instantiate(bullet, firePoint.position, firePoint.rotation);
+        GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+        newBullet.GetComponent<Bullet>().firer = this.gameObject;
+    }
+
+    void SetMine() {
+        GameObject newMine = Instantiate(mine, firePoint.position, firePoint.rotation);
+        newMine.GetComponent<Bullet>().firer = this.gameObject;
+    }
+
+    public void TakeDamage() {
+        damage++;
+        if (damage >= 5) {
+            StartCoroutine(Explode());
+        }
+    }
+
+    IEnumerator Explode() {
+        yield return new WaitForSeconds(0.25f);
     }
 }
