@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+public class Mine : MonoBehaviour {
     public Rigidbody2D rigidbody;
     public GameObject owner;
-    public float speed = 5f;
-    public float lifeTime = 4f;
+    public float lifeTime = 10f;
 
     void Start() {
-        rigidbody.velocity = transform.right * speed;
         StartCoroutine(Explode());
     }
 

@@ -114,7 +114,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -143,9 +143,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 3377526112355753275}
-  firer: {fileID: 0}
+  owner: {fileID: 0}
   speed: 5
-  lifeTime: 10
+  lifeTime: 2
 --- !u!114 &2062226707649439215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,5 +158,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28307f434f7eaf54d9091d77d6991132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yThreshold: 5.5
-  xThreshold: 9.5
+  distanceY: 5.5
+  distanceX: 9.5
