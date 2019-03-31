@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5b91007d01afcd2439e1be1febd76e1b
+guid: 0b44569899439cd4c806c7824c665852
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,12 +8,12 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Migu 1P
+  fontName: Migu 1M
   fontNames:
-  - Migu 1P
+  - Migu 1M
   fallbackFontReferences: []
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 2
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1
