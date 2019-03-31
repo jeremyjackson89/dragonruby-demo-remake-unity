@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6946550649270357188}
   - component: {fileID: 6575793751449135106}
   - component: {fileID: 6946550649270357190}
+  - component: {fileID: 5648853070822508310}
   m_Layer: 0
   m_Name: RedMine
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 6946550649270357189}
-  owner: 
+  owner: {fileID: 0}
   speed: 0
   lifeTime: 10
 --- !u!114 &6946550649270357190
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceY: 5.5
   distanceX: 9.5
+--- !u!114 &5648853070822508310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6946550649270357185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca216acdc6c06e43b01f728ea5137ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 6946550649270357306}

@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 3030170948302791079}
   - component: {fileID: 4555850259551706323}
   - component: {fileID: 3030170948302791097}
+  - component: {fileID: 9077493709327966191}
   m_Layer: 0
   m_Name: BlueMine
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 3030170948302791078}
-  owner: 
+  owner: {fileID: 0}
   speed: 0
   lifeTime: 10
 --- !u!114 &3030170948302791097
@@ -160,3 +161,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceY: 5.5
   distanceX: 9.5
+--- !u!114 &9077493709327966191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030170948302791098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca216acdc6c06e43b01f728ea5137ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 3030170948302791077}

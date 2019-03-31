@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ship : MonoBehaviour {
+    public SpriteRenderer sprite;
     public Rigidbody2D rigidbody;
     public Transform bulletSpawn;
     public Transform mineSpawn;
@@ -14,17 +15,17 @@ public class Ship : MonoBehaviour {
     public int startX;
     public bool isDead = false;
 
-    private int maxAlpha = 255;
     private int turnSpeed = 3;
     private int thrust = 5;
     private int maxSpeed = 10;
 
     void Start() {
+        HideShip();
         ResetShip();
     }
 
     void Update() {
-        if (isDead)return;
+        if (isDead) return;
 
         float inputTurn = Input.GetAxisRaw("Horizontal");
         bool inputMove = Input.GetButton("Jump");
@@ -34,6 +35,7 @@ public class Ship : MonoBehaviour {
         }
 
         if (inputMove) {
+            GameManager.HideInstructions();
             rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxSpeed);
             rigidbody.AddRelativeForce(Vector2.right * thrust * 0.75f);
         }
@@ -52,7 +54,7 @@ public class Ship : MonoBehaviour {
         rigidbody.velocity = Vector3.zero;
         float zRotation = this.gameObject.name == "BlueShip" ? 0f : -180f;
         transform.eulerAngles = new Vector3(0, 0, zRotation);
-        isDead = false;
+        if (isDead) isDead = false;
     }
 
     void Shoot() {
@@ -76,12 +78,19 @@ public class Ship : MonoBehaviour {
         damage++;
         if (damage >= 5) {
             isDead = true;
+            HideShip();
             StartCoroutine(Explode());
         }
     }
 
+    void HideShip() {
+        Color color = sprite.color;
+        color.a = 0f;
+        sprite.color = color;
+    }
+
     IEnumerator Explode() {
-        yield return new WaitForSeconds(0.10f);
+        yield return new WaitForSeconds(0.5f);
         // Destroy(this.gameObject);
         GameManager.StartNewRound();
     }

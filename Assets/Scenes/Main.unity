@@ -656,10 +656,10 @@ MonoBehaviour:
   redShip: {fileID: 1857768348}
   blueScore: {fileID: 27025798}
   redScore: {fileID: 350439924}
-  instructions: {fileID: 182128466}
-  starsContainer: {fileID: 1110857057}
+  instructions: {fileID: 182128464}
   starPrefab: {fileID: 5396149372246653443, guid: adbf729dc24b89f47a408956e5845287,
     type: 3}
+  starsContainer: {fileID: 1110857057}
 --- !u!4 &1359467817
 Transform:
   m_ObjectHideFlags: 0
@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 1853251450}
   - component: {fileID: 1853251448}
   - component: {fileID: 1853251452}
+  - component: {fileID: 1853251453}
   m_Layer: 0
   m_Name: BlueShip
   m_TagString: Player
@@ -753,6 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7309bb55037c840488931ddd2f2d13c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 1853251449}
   rigidbody: {fileID: 1853251451}
   bulletSpawn: {fileID: 55364686}
   mineSpawn: {fileID: 1427655665}
@@ -871,6 +873,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceY: 5.5
   distanceX: 9.5
+--- !u!114 &1853251453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853251446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca216acdc6c06e43b01f728ea5137ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 1853251449}
 --- !u!1 &1857768346
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +900,7 @@ GameObject:
   - component: {fileID: 1857768349}
   - component: {fileID: 1857768348}
   - component: {fileID: 1857768347}
+  - component: {fileID: 1857768353}
   m_Layer: 0
   m_Name: RedShip
   m_TagString: Player
@@ -918,6 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7309bb55037c840488931ddd2f2d13c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprite: {fileID: 1857768351}
   rigidbody: {fileID: 1857768350}
   bulletSpawn: {fileID: 2109141586}
   mineSpawn: {fileID: 744669153}
@@ -1038,6 +1055,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
+--- !u!114 &1857768353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857768346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca216acdc6c06e43b01f728ea5137ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 1857768351}
 --- !u!1 &2005165340
 GameObject:
   m_ObjectHideFlags: 0
