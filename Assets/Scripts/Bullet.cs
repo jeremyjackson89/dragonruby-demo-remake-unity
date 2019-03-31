@@ -14,8 +14,15 @@ public class Bullet : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player") && other != owner) {
-            other.GetComponent<Ship>().TakeDamage();
+        if (owner.name.Length < 1)return;
+        if (other.CompareTag("Player") && other.name != owner.name) {
+            Ship enemyShip = other.GetComponent<Ship>();
+            if (enemyShip.isDead) return;
+            
+            enemyShip.TakeDamage();
+            if (enemyShip.isDead) {
+                owner.GetComponent<Ship>().score++;
+            }
         }
     }
 
