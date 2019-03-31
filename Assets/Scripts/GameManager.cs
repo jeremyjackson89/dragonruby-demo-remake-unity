@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
     private static GameManager instance;
 
-    public Ship BlueShip;
-    public Ship RedShip;
-    public Text BlueScore;
-    public Text RedScore;
-    public Text Instructions;
+    public Ship blueShip;
+    public Ship redShip;
+    public Text blueScore;
+    public Text redScore;
+    public Text instructions;
+    public Transform starsContainer;
+    public GameObject starPrefab;
 
     void Awake() {
         if (!instance) {
@@ -21,22 +23,32 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
+        MakeStars();
         SetScore();
     }
 
     void Update() {
+    }
 
+    void MakeStars() {
+        for (int i = 0; i < 100; i++) {
+            GameObject newStar = Instantiate(starPrefab);
+            float scale = Random.Range(0.1f, 0.35f);
+            newStar.transform.position = new Vector2(Random.Range(-9f, 9f), Random.Range(-5f, 5f));
+            newStar.transform.localScale = new Vector2(scale, scale);
+            newStar.transform.SetParent(starsContainer);
+        }
     }
 
     public static void SetScore() {
-        instance.BlueScore.text = instance.BlueShip.score.ToString();
-        instance.RedScore.text = instance.RedShip.score.ToString();
+        instance.blueScore.text = instance.blueShip.score.ToString();
+        instance.redScore.text = instance.redShip.score.ToString();
     }
 
     public static void StartNewRound() {
         SetScore();
         // fade everything out
-        instance.BlueShip.ResetShip();
-        instance.RedShip.ResetShip();
+        instance.blueShip.ResetShip();
+        instance.redShip.ResetShip();
     }
 }
