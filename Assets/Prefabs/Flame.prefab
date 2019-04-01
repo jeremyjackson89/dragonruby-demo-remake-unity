@@ -145,5 +145,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 117821097352219405}
   sprite: {fileID: 4261573202643396999}
-  speed: 10
+  speed: 2
   lifeTime: 0.5

@@ -42,6 +42,7 @@ public class Ship : MonoBehaviour {
             rigidbody.AddRelativeForce(Vector2.right * thrust * 0.75f);
 
             GameObject newFlame = Instantiate(flame, flameSpawn.position, flameSpawn.rotation);
+            newFlame.transform.SetParent(transform);
         }
 
         if (Input.GetButtonDown("Fire1")) {
@@ -73,7 +74,6 @@ public class Ship : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
-            isDead = true;
             StartCoroutine(Explode());
         }
     }
@@ -81,8 +81,6 @@ public class Ship : MonoBehaviour {
     public void TakeDamage() {
         damage++;
         if (damage >= 5) {
-            isDead = true;
-            HideShip();
             StartCoroutine(Explode());
         }
     }
@@ -94,8 +92,16 @@ public class Ship : MonoBehaviour {
     }
 
     IEnumerator Explode() {
+        isDead = true;
+        HideShip();
+        int flamesToMake = Random.Range(10, 20);
+        for (int i = 0; i < flamesToMake; i++) {
+            GameObject newFlame = Instantiate(flame, transform.position, transform.rotation);
+            newFlame.transform.SetParent(transform);
+            newFlame.GetComponent<Flame>().speed = 5.5f;
+            newFlame.GetComponent<Flame>().lifeTime = 0.5f;
+        }
         yield return new WaitForSeconds(0.5f);
-        // Destroy(this.gameObject);
         GameManager.StartNewRound();
     }
 }

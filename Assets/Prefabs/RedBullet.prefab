@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 3377526112355753275}
   owner: {fileID: 0}
+  flame: {fileID: 9110302823175092886, guid: 34c404f252063e041b965e5bc93e3e51, type: 3}
   speed: 5
   lifeTime: 2
 --- !u!114 &2062226707649439215

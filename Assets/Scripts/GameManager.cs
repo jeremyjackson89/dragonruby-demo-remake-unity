@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public GameObject starPrefab;
     public Transform starsContainer;
     private Fade[] fadeItems;
+    public static bool globalFadeInProgress;
 
     void Awake() {
         if (!instance) {
@@ -31,8 +32,6 @@ public class GameManager : MonoBehaviour {
             fadeItem.FadeIn();
         }
     }
-
-    void Update() {}
 
     void MakeStars() {
         for (int i = 0; i < 100; i++) {
@@ -59,14 +58,14 @@ public class GameManager : MonoBehaviour {
     }
 
     static IEnumerator ResetShips() {
+        globalFadeInProgress = true;
         float waitTime = 2f;
         instance.fadeItems = GameObject.FindObjectsOfType<Fade>();
         foreach (Fade fadeItem in instance.fadeItems) {
             fadeItem.FadeOut();
         }
-        
+
         yield return new WaitForSeconds(waitTime);
-        
         GameObject[] liveBullets = GameObject.FindGameObjectsWithTag("Bullet");
         foreach (GameObject bullet in liveBullets) {
             Destroy(bullet);
@@ -79,6 +78,7 @@ public class GameManager : MonoBehaviour {
         foreach (Fade fadeItem in instance.fadeItems) {
             fadeItem.FadeIn();
         }
+        globalFadeInProgress = false;
 
         instance.instructions.SetActive(true);
     }
