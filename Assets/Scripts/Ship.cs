@@ -7,8 +7,10 @@ public class Ship : MonoBehaviour {
     public Rigidbody2D rigidbody;
     public Transform bulletSpawn;
     public Transform mineSpawn;
+    public Transform flameSpawn;
     public GameObject bullet;
     public GameObject mine;
+    public GameObject flame;
 
     public int score = 0;
     public int damage = 0;
@@ -25,7 +27,7 @@ public class Ship : MonoBehaviour {
     }
 
     void Update() {
-        if (isDead) return;
+        if (isDead)return;
 
         float inputTurn = Input.GetAxisRaw("Horizontal");
         bool inputMove = Input.GetButton("Jump");
@@ -38,6 +40,8 @@ public class Ship : MonoBehaviour {
             GameManager.HideInstructions();
             rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxSpeed);
             rigidbody.AddRelativeForce(Vector2.right * thrust * 0.75f);
+
+            GameObject newFlame = Instantiate(flame, flameSpawn.position, flameSpawn.rotation);
         }
 
         if (Input.GetButtonDown("Fire1")) {
@@ -54,7 +58,7 @@ public class Ship : MonoBehaviour {
         rigidbody.velocity = Vector3.zero;
         float zRotation = this.gameObject.name == "BlueShip" ? 0f : -180f;
         transform.eulerAngles = new Vector3(0, 0, zRotation);
-        if (isDead) isDead = false;
+        if (isDead)isDead = false;
     }
 
     void Shoot() {

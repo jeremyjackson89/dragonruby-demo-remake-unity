@@ -301,6 +301,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 182128464}
   m_CullTransparentMesh: 0
+--- !u!1 &313122712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 313122713}
+  m_Layer: 0
+  m_Name: FlameSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &313122713
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313122712}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1853251447}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &350439922
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +771,7 @@ Transform:
   - {fileID: 55364686}
   - {fileID: 1427655665}
   - {fileID: 1874038582}
+  - {fileID: 313122713}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -760,8 +791,10 @@ MonoBehaviour:
   rigidbody: {fileID: 1853251451}
   bulletSpawn: {fileID: 55364686}
   mineSpawn: {fileID: 1427655665}
+  flameSpawn: {fileID: 313122713}
   bullet: {fileID: 6698932331551038405, guid: 6b45b3c9f79bce84abcd454340888cd1, type: 3}
   mine: {fileID: 3030170948302791098, guid: 06b58f0945a46cd47b94f7853f608451, type: 3}
+  flame: {fileID: 9110302823175092886, guid: 34c404f252063e041b965e5bc93e3e51, type: 3}
   score: 0
   damage: 0
   startX: -5
@@ -895,7 +928,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853251446}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49a8f55c3721a774781fd4d10bce5010, type: 3}
   m_Name: 
@@ -955,8 +988,10 @@ MonoBehaviour:
   rigidbody: {fileID: 1857768350}
   bulletSpawn: {fileID: 2109141586}
   mineSpawn: {fileID: 744669153}
+  flameSpawn: {fileID: 1942386482}
   bullet: {fileID: 6698932331551038405, guid: 1a61be65254d77042a7cd4d3ab64e775, type: 3}
   mine: {fileID: 6946550649270357185, guid: c7b883cdfc70f234493922be00e42d15, type: 3}
+  flame: {fileID: 9110302823175092886, guid: 34c404f252063e041b965e5bc93e3e51, type: 3}
   score: 0
   damage: 0
   startX: 5
@@ -1069,6 +1104,7 @@ Transform:
   m_Children:
   - {fileID: 2109141586}
   - {fileID: 744669153}
+  - {fileID: 1942386482}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
@@ -1102,7 +1138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1874038582
 Transform:
   m_ObjectHideFlags: 0
@@ -5783,6 +5819,36 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &1942386481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1942386482}
+  m_Layer: 0
+  m_Name: FlameSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1942386482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942386481}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalPosition: {x: -0.2, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1857768352}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2005165340
 GameObject:
   m_ObjectHideFlags: 0
