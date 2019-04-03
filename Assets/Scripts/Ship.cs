@@ -25,9 +25,13 @@ public class Ship : MonoBehaviour {
     private Quaternion healthRotation;
     private bool isPlayerOne;
     private bool resetting;
+    private string playerPrefix;
 
     void Awake() {
         isPlayerOne = this.gameObject.name == "BlueShip";
+        playerPrefix = isPlayerOne ? "P1" : "P2";
+        Debug.Log("isPlayerOne ? " + isPlayerOne);
+        Debug.Log("playerPrefix ? " + playerPrefix);
         ResetShip();
         healthRotation = healthContainer.transform.rotation;
     }
@@ -42,28 +46,27 @@ public class Ship : MonoBehaviour {
             }
         }
 
-        float inputTurn = Input.GetAxisRaw("Horizontal");
-        bool inputMove = Input.GetButton("Jump");
+        float inputTurn = Input.GetAxisRaw("Horizontal" + playerPrefix);
+        bool inputMove = Input.GetButton("Thrust" + playerPrefix);
 
-        if (isPlayerOne) {
-            if (Input.GetButtonDown("Fire1")) {
-                Shoot();
-            }
-            if (Input.GetButtonDown("Fire2")) {
-                SetMine();
-            }
-            if (inputTurn != 0f) {
-                transform.Rotate(new Vector3(0, 0, -inputTurn * turnSpeed));
-            }
+        if (Input.GetButtonDown("Fire1" + playerPrefix)) {
+            Shoot();
+        }
+        if (Input.GetButtonDown("Fire2"  + playerPrefix)) {
+            SetMine();
+        }
 
-            if (inputMove) {
-                GameManager.HideInstructions();
-                rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxSpeed);
-                rigidbody.AddRelativeForce(Vector2.right * thrust * 0.75f);
+        if (inputTurn != 0f) {
+            transform.Rotate(new Vector3(0, 0, -inputTurn * turnSpeed));
+        }
 
-                GameObject newFlame = Instantiate(flame, flameSpawn.position, flameSpawn.rotation);
-                newFlame.transform.SetParent(transform);
-            }
+        if (inputMove) {
+            GameManager.HideInstructions();
+            rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxSpeed);
+            rigidbody.AddRelativeForce(Vector2.right * thrust * 0.75f);
+
+            GameObject newFlame = Instantiate(flame, flameSpawn.position, flameSpawn.rotation);
+            newFlame.transform.SetParent(transform);
         }
 
         ResetHealthContainer();
