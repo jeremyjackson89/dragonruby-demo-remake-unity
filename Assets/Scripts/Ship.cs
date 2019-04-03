@@ -39,14 +39,8 @@ public class Ship : MonoBehaviour {
     void Update() {
         if (isDead || resetting) return;
 
-        if (Input.GetJoystickNames().Length > 0) {
-            Debug.Log(Input.GetJoystickNames().Length + " joysticks connected");
-            for (int i = 0; i < Input.GetJoystickNames().Length; i++) {
-                Debug.Log(Input.GetJoystickNames()[i]);
-            }
-        }
-
         float inputTurn = Input.GetAxisRaw("Horizontal" + playerPrefix);
+        float dpadInputTurn = Input.GetAxis("DpadHorizontal" + playerPrefix);
         bool inputMove = Input.GetButton("Thrust" + playerPrefix);
 
         if (Input.GetButtonDown("Fire1" + playerPrefix)) {
@@ -56,8 +50,10 @@ public class Ship : MonoBehaviour {
             SetMine();
         }
 
-        if (inputTurn != 0f) {
+        if (inputTurn != 0) {
             transform.Rotate(new Vector3(0, 0, -inputTurn * turnSpeed));
+        } else if (dpadInputTurn != 0) {
+            transform.Rotate(new Vector3(0, 0, -dpadInputTurn * turnSpeed));
         }
 
         if (inputMove) {
