@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28307f434f7eaf54d9091d77d6991132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceY: 5.5
-  distanceX: 9.5
+  distanceY: 5
+  distanceX: 9
 --- !u!114 &9192177563864613743
 MonoBehaviour:
   m_ObjectHideFlags: 0

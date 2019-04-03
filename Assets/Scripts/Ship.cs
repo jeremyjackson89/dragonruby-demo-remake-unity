@@ -24,16 +24,16 @@ public class Ship : MonoBehaviour {
     private int maxSpeed = 10;
     private Quaternion healthRotation;
     private bool isPlayerOne;
+    private bool resetting;
 
     void Awake() {
         isPlayerOne = this.gameObject.name == "BlueShip";
-        HideShip();
         ResetShip();
         healthRotation = healthContainer.transform.rotation;
     }
 
     void Update() {
-        if (isDead)return;
+        if (isDead || resetting) return;
 
         if (Input.GetJoystickNames().Length > 0) {
             Debug.Log(Input.GetJoystickNames().Length + " joysticks connected");
@@ -67,17 +67,20 @@ public class Ship : MonoBehaviour {
         }
 
         ResetHealthContainer();
+        DrawHealth();
     }
 
     public void ResetShip() {
+        HideShip();
+        resetting = true;
+        isDead = false;
         damage = 0;
         transform.position = new Vector2(startX, Random.Range(-3.5f, 3.5f));
         rigidbody.velocity = Vector3.zero;
         float zRotation = isPlayerOne ? 0f : -180f;
         transform.eulerAngles = new Vector3(0, 0, zRotation);
-        ResetHealthContainer();
-        DrawHealth();
-        if (isDead)isDead = false;
+        GetComponent<BoxCollider2D>().enabled = true;
+        resetting = false;
     }
 
     void ResetHealthContainer() {
@@ -127,6 +130,8 @@ public class Ship : MonoBehaviour {
             position.x += i * 0.35f;
             GameObject newHpDot = Instantiate(hpDot, position, healthContainer.transform.rotation);
             newHpDot.transform.SetParent(healthContainer.transform);
+            SpriteRenderer healthSprite = newHpDot.GetComponent<SpriteRenderer>();
+            healthSprite.color = sprite.color;
         }
     }
 
@@ -134,6 +139,7 @@ public class Ship : MonoBehaviour {
         Color color = sprite.color;
         color.a = 0f;
         sprite.color = color;
+        GetComponent<BoxCollider2D>().enabled = false;
     }
 
     IEnumerator Explode() {

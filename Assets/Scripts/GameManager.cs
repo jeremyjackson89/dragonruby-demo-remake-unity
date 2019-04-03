@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour {
 
     public static void StartNewRound() {
         SetScore();
+        if (globalFadeInProgress) return;
         instance.StartCoroutine(ResetShips());
     }
 
